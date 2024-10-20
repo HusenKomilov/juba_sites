@@ -13,6 +13,8 @@ urlpatterns = [
     path("", include("juba.urls")),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
+if settings.DEBUG:
+    urlpatterns += staticfiles_urlpatterns()
 urlpatterns += [
     # DRF auth token
     path("auth-token/", obtain_auth_token),
