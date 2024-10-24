@@ -2,8 +2,9 @@ from ckeditor.fields import RichTextField
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 from django_resized import ResizedImageField
-from juba.choices import PhotoTypeChoices
 from phonenumber_field.modelfields import PhoneNumberField
+
+from juba.choices import PhotoTypeChoices
 from utils.models import BaseModel
 
 
@@ -20,8 +21,10 @@ class Services(BaseModel):
 class ServiceType(BaseModel):
     title = models.CharField(max_length=128, verbose_name=_("Title"), )
     description = models.TextField(verbose_name=_("Description"))
-    photo = models.ImageField(upload_to="service_type/", verbose_name=_("Photo"))
+    photo = models.ImageField(upload_to="service_type/", verbose_name=_("Photo"), null=True, blank=True)
     services = models.ForeignKey(Services, on_delete=models.CASCADE, related_name="services_types")
+    index = models.IntegerField(default=0)
+    is_top = models.BooleanField(default=False)
 
     def __str__(self):
         return self.title

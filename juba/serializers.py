@@ -16,6 +16,7 @@ class HashtagsSerializer(serializers.ModelSerializer):
 
 
 class OurKeysSerializer(serializers.ModelSerializer):
+    service = serializers.StringRelatedField()
     hashtags = HashtagsSerializer(many=True, read_only=True)
 
     class Meta:
@@ -70,3 +71,19 @@ class PricingSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.Pricing
         fields = ("id", "title", "price")
+
+
+class ServiceTypeTopSerializer(serializers.ModelSerializer):
+    services = serializers.StringRelatedField()
+
+    class Meta:
+        model = models.ServiceType
+        fields = ("id", "title", "services", "description")
+
+
+class ServiceTypeBottomSerializer(serializers.ModelSerializer):
+    services = serializers.StringRelatedField()
+
+    class Meta:
+        model = models.ServiceType
+        fields = ("id", "title", "services", "description", "photo")
