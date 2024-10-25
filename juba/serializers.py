@@ -90,8 +90,6 @@ class ServiceTypeBottomSerializer(serializers.ModelSerializer):
 
 
 class ServiceDetailShortSerializer(serializers.ModelSerializer):
-    services = serializers.StringRelatedField()
-
     class Meta:
-        model = models.ServiceDetailSolo
+        model = models.Services
         fields = ("id", "detail_title", "detail_description")
