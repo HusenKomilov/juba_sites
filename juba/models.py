@@ -12,6 +12,10 @@ from utils.models import BaseModel
 class Services(BaseModel):
     title = models.CharField(max_length=256, verbose_name=_("Title"))
     short_description = models.TextField(verbose_name=_("Short description"))
+    detail_title = models.CharField(max_length=512, null=True)
+    detail_description = models.TextField(null=True)
+    detail_sub_title = models.CharField(max_length=512, null=True)
+    detail_sub_description = models.TextField(null=True)
 
     def __str__(self):
         return self.title

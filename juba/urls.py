@@ -12,8 +12,12 @@ urlpatterns = [
     path("our-contact/", views.OurContactAPIView.as_view(), name="our-contact"),
     path("contact-user/", views.ContactClientAPIView.as_view(), name="contact"),
     path("service/", views.ServiceHomePageAPIView.as_view(), name="service"),
+    #services detail
+
     path("service/solo/<int:service_id>/", views.ServiceDetailSoloAPIView.as_view(), name="service-solo"),
     path("service/pricing/<int:service_id>/", views.ServicePricingAPIView.as_view(), name="service"),
-    path("service/type/<int:service_id>/", views.ServiceTypeTopAPIView.as_view(), name="service_type"),
-    path("service/keys/<int:service_id>/", views.ServiceKeysAPIView.as_view(), name="service_keys")
+    path("service/type/<int:service_id>/top/", views.ServiceTypeTopAPIView.as_view(), name="service_type"),
+    path("service/type/<int:service_id>/bottom/", views.ServiceTypeBottomAPIView.as_view(), name="service_type"),
+    path("service/keys/<int:service_id>/", views.ServiceKeysAPIView.as_view(), name="service_keys"),
+    path("service/<int:service_id/detail/", views.ServiceDetailShortAPIView.as_view(), name="service_detail"),
 ]

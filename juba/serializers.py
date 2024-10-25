@@ -70,7 +70,7 @@ class ServiceDetailSoloSerializer(serializers.ModelSerializer):
 class PricingSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.Pricing
-        fields = ("id", "title", "price")
+        fields = ("id", "title", "price", "description")
 
 
 class ServiceTypeTopSerializer(serializers.ModelSerializer):
@@ -78,7 +78,7 @@ class ServiceTypeTopSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = models.ServiceType
-        fields = ("id", "title", "services", "description")
+        fields = ("id", "title", "services", "description", "is_top")
 
 
 class ServiceTypeBottomSerializer(serializers.ModelSerializer):
@@ -86,4 +86,12 @@ class ServiceTypeBottomSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = models.ServiceType
-        fields = ("id", "title", "services", "description", "photo")
+        fields = ("id", "title", "services", "description", "photo", "is_top")
+
+
+class ServiceDetailShortSerializer(serializers.ModelSerializer):
+    services = serializers.StringRelatedField()
+
+    class Meta:
+        model = models.ServiceDetailSolo
+        fields = ("id", "detail_title", "detail_description")

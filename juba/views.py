@@ -70,9 +70,11 @@ class ServiceTypeTopAPIView(generics.ListAPIView):
     queryset = models.ServiceType.objects.filter(is_top=True).order_by("index").select_related("services")
     serializer_class = serializers.ServiceTypeTopSerializer
 
+
 class ServiceTypeBottomAPIView(generics.ListAPIView):
     queryset = models.ServiceType.objects.filter(is_top=False).select_related("services")
     serializer_class = serializers.ServiceTypeBottomSerializer
+
 
 class ServiceKeysAPIView(generics.ListAPIView):
     queryset = models.OurKeys.objects.all().select_related("service").prefetch_related("hashtags")
@@ -81,3 +83,8 @@ class ServiceKeysAPIView(generics.ListAPIView):
     def get_queryset(self):
         service_id = self.kwargs.get("service_id")
         return self.queryset.filter(service_id=service_id)
+
+
+class ServiceDetailShortAPIView(generics.ListAPIView):
+    queryset = models.Services.objects.all().select_related("service")
+    serializer_class = serializers.ServiceDetailShortSerializer
