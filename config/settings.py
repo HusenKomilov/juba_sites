@@ -46,7 +46,6 @@ INSTALLED_APPS = [
     "drf_spectacular",
     "phonenumber_field",
     "ckeditor",
-    "corsheaders",
 
     # Local modullar
     "juba",
