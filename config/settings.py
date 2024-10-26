@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     "drf_spectacular",
     "phonenumber_field",
     "ckeditor",
+    "corsheaders",
 
     # Local modullar
     "juba",
@@ -54,6 +55,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
+    "corsheaders.middleware.CorsMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
@@ -153,3 +155,6 @@ REST_FRAMEWORK = {
 }
 
 
+CORS_ALLOWED_ORIGINS = [
+    "localhost:3000",
+]
