@@ -24,3 +24,4 @@ sqlparse==0.5.1
 typing_extensions==4.12.2
 uritemplate==4.1.1
 django-cors-headers==4.5.0
+django-modeltranslation==0.19.10
