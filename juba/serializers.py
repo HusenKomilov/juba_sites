@@ -36,10 +36,16 @@ class ResultNumberSerializer(serializers.ModelSerializer):
         fields = ("id", "title", "result")
 
 
-class StaticPhotoSerializer(serializers.ModelSerializer):
+class StaticPhotoClientSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.StaticPhoto
-        fields = ("id", "photo_type", "photo", "background_image")
+        fields = ("id", "photo_type", "photo")
+
+
+class StaticPhotoTeamSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = models.StaticPhoto
+        fields = ("id", "username", "job_title", "photo_type", "photo", "background_image")
 
 
 class OurContactSerializer(serializers.ModelSerializer):

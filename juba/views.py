@@ -25,12 +25,12 @@ class ResultNumberAPIView(generics.ListAPIView):
 
 class StaticClientPhotoAPIView(generics.ListAPIView):
     queryset = models.StaticPhoto.objects.filter(photo_type=choices.PhotoTypeChoices.CLIENTS)
-    serializer_class = serializers.StaticPhotoSerializer
+    serializer_class = serializers.StaticPhotoClientSerializer
 
 
 class StaticTeamPhotoAPIView(generics.ListAPIView):
     queryset = models.StaticPhoto.objects.filter(photo_type=choices.PhotoTypeChoices.TEAMS)
-    serializer_class = serializers.StaticPhotoSerializer
+    serializer_class = serializers.StaticPhotoTeamSerializer
 
 
 class OurContactAPIView(generics.ListAPIView):
@@ -88,6 +88,7 @@ class ServiceKeysAPIView(generics.ListAPIView):
 class ServiceDetailShortAPIView(generics.ListAPIView):
     queryset = models.Services.objects.all().select_related("service")
     serializer_class = serializers.ServiceDetailShortSerializer
+
 
 class WorksAPIView(generics.ListAPIView):
     queryset = models.Works.objects.all().select_related("service")
