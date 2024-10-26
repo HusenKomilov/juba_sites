@@ -1,6 +1,7 @@
 from ckeditor.widgets import CKEditorWidget
 from django import forms
 from django.contrib import admin
+from modeltranslation.admin import TranslationAdmin
 
 from juba import models
 
@@ -35,7 +36,7 @@ class ServiceWorksAdmin(admin.TabularInline):
 
 
 @admin.register(models.Services)
-class ServicesAdmin(admin.ModelAdmin):
+class ServicesAdmin(TranslationAdmin, admin.ModelAdmin):
     list_display = ("pk", "title")
     inlines = [
         ServiceTypeInline,
@@ -46,12 +47,12 @@ class ServicesAdmin(admin.ModelAdmin):
 
 
 @admin.register(models.StaticPhoto)
-class StaticPageAdmin(admin.ModelAdmin):
+class StaticPageAdmin(TranslationAdmin):
     pass
 
 
 @admin.register(models.Slider)
-class SliderAdmin(admin.ModelAdmin):
+class SliderAdmin(TranslationAdmin):
     list_display = ("pk", "title")
 
     def has_add_permission(self, request):
@@ -61,17 +62,17 @@ class SliderAdmin(admin.ModelAdmin):
 
 
 @admin.register(models.Hashtags)
-class HashtagsAdmin(admin.ModelAdmin):
+class HashtagsAdmin(TranslationAdmin):
     list_display = ("pk", "title")
 
 
 @admin.register(models.OurKeys)
-class OurKeysAdmin(admin.ModelAdmin):
+class OurKeysAdmin(TranslationAdmin):
     list_display = ("pk", "title")
 
 
 @admin.register(models.StaticSolo)
-class StaticSoloAdmin(admin.ModelAdmin):
+class StaticSoloAdmin(TranslationAdmin):
     def has_add_permission(self, request):
         if models.StaticSolo.objects.all().count() >= 1:
             return False
@@ -79,7 +80,7 @@ class StaticSoloAdmin(admin.ModelAdmin):
 
 
 @admin.register(models.ResultNumber)
-class ResultNumberAdmin(admin.ModelAdmin):
+class ResultNumberAdmin(TranslationAdmin):
     def has_add_permission(self, request):
         if models.ResultNumber.objects.all().count() >= 3:
             return False
