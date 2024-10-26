@@ -39,7 +39,7 @@ class ResultNumberSerializer(serializers.ModelSerializer):
 class StaticPhotoSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.StaticPhoto
-        fields = ("id", "photo_type", "photo")
+        fields = ("id", "photo_type", "photo", "background_image")
 
 
 class OurContactSerializer(serializers.ModelSerializer):
@@ -93,3 +93,11 @@ class ServiceDetailShortSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.Services
         fields = ("id", "detail_title", "detail_description")
+
+
+class WorksServiceSerializer(serializers.ModelSerializer):
+    services = serializers.StringRelatedField()
+
+    class Meta:
+        model = models.Works
+        fields = ("id", "short_description", "services", "photo")

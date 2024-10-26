@@ -20,4 +20,5 @@ urlpatterns = [
     path("service/type/<int:service_id>/bottom/", views.ServiceTypeBottomAPIView.as_view(), name="service_type"),
     path("service/keys/<int:service_id>/", views.ServiceKeysAPIView.as_view(), name="service_keys"),
     path("service/<int:service_id/detail/", views.ServiceDetailShortAPIView.as_view(), name="service_detail"),
+    path("service/<int:service_id>/works/", views.WorksAPIView.as_view(), name="service_works"),
 ]

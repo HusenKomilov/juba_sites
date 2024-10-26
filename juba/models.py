@@ -43,7 +43,7 @@ class ServiceDetailSolo(BaseModel):
 
 # Servislardagi qilingan ishlari uchun
 class Works(BaseModel):
-    short_description = models.TextField()
+    short_description = models.TextField(null=True, blank=True)
     photo = models.ImageField(upload_to="works/", verbose_name=_("Photo"))
     services = models.ForeignKey(Services, on_delete=models.CASCADE, related_name="works")
 
@@ -112,6 +112,10 @@ class ContactUser(BaseModel):
 # klientlar va jamoa rasmlari uchun
 class StaticPhoto(BaseModel):
     photo = models.ImageField(upload_to="team/", verbose_name=_("Photo"))
+    background_image = models.ImageField(upload_to="team/background", verbose_name=_("Background Image"), null=True,
+                                         blank=True)
+    username = models.CharField(max_length=256, null=True, blank=True)
+    job_title = models.CharField(max_length=256, null=True, blank=True)
     photo_type = models.CharField(max_length=128, verbose_name=_("Photo Type"), choices=PhotoTypeChoices.choices)
 
     def __str__(self):

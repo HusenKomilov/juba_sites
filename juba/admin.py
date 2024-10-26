@@ -1,3 +1,5 @@
+from ckeditor.widgets import CKEditorWidget
+from django import forms
 from django.contrib import admin
 
 from juba import models
@@ -11,10 +13,6 @@ class ServiceTypeInline(admin.TabularInline):
 class ServiceDetailPhotoInline(admin.TabularInline):
     model = models.ServiceDetailSolo
     extra = 1
-
-
-from ckeditor.widgets import CKEditorWidget
-from django import forms
 
 
 class PricingAdminForm(forms.ModelForm):
@@ -31,6 +29,11 @@ class ServicePrisingInline(admin.TabularInline):
     extra = 1
 
 
+class ServiceWorksAdmin(admin.TabularInline):
+    model = models.Works
+    extra = 1
+
+
 @admin.register(models.Services)
 class ServicesAdmin(admin.ModelAdmin):
     list_display = ("pk", "title")
@@ -38,6 +41,7 @@ class ServicesAdmin(admin.ModelAdmin):
         ServiceTypeInline,
         ServiceDetailPhotoInline,
         ServicePrisingInline,
+        ServiceWorksAdmin,
     ]
 
 
