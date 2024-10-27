@@ -93,3 +93,8 @@ class OurContactAdmin(admin.ModelAdmin):
         if models.Contact.objects.all().count() >= 1:
             return False
         return True
+
+
+@admin.register(models.ContactUser)
+class ContactUserAdmin(admin.ModelAdmin):
+    list_display = ("pk", "name", "phone_number")
