@@ -151,8 +151,8 @@ class Slider(BaseModel):
 # JUBA ni kontaktlari uchun
 class Contact(BaseModel):
     phone_number = PhoneNumberField(unique=True, verbose_name=_("Phone Number"))
-    longitude = models.DecimalField(default=0, max_digits=9, decimal_places=6)
-    latitude = models.DecimalField(default=0, max_digits=9, decimal_places=6)
+    longitude = models.CharField(max_length=64, verbose_name=_("Longitude"))
+    latitude = models.CharField(max_length=64, verbose_name=_("Latitude"))
     email = models.CharField(max_length=128, verbose_name=_("Email"))
     telegram_url = models.CharField(max_length=128, verbose_name=_("Telegram Username"))
     instagram_url = models.CharField(max_length=128, verbose_name=_("Instagram Link"))
