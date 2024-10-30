@@ -8,10 +8,10 @@ from drf_spectacular.views import SpectacularAPIView, SpectacularSwaggerView
 from rest_framework.authtoken.views import obtain_auth_token
 
 urlpatterns = [
-    path("admin/", admin.site.urls),
-    path('ckeditor/', include('ckeditor_uploader.urls')),
-    path("", include("juba.urls")),
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+                  path("admin/", admin.site.urls),
+                  path('ckeditor/', include('ckeditor_uploader.urls')),
+                  path("", include("juba.urls")),
+              ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 if settings.DEBUG:
     urlpatterns += staticfiles_urlpatterns()
@@ -25,6 +25,10 @@ urlpatterns += [
         name="api-docs",
     ),
 ]
+
+from .routing import get_app_list
+
+admin.AdminSite.get_app_list = get_app_list
 
 if settings.DEBUG:
     # This allows the error pages to be debugged during development, just visit

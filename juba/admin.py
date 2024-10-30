@@ -9,11 +9,21 @@ from juba import models
 class ServiceTypeInline(admin.TabularInline):
     model = models.ServiceType
     extra = 1
+    fieldsets = (
+        ("Russian", {
+            "fields": ("title_ru", "description_ru", "title_uz", "description_uz", "photo", "index", "is_top"),
+        }),
+    )
 
 
 class ServiceDetailPhotoInline(admin.TabularInline):
     model = models.ServiceDetailSolo
     extra = 1
+    fieldsets = (
+        ("Russian", {
+            "fields": ("description_ru", "description_uz", "photo")
+        }),
+    )
 
 
 class PricingAdminForm(forms.ModelForm):
@@ -25,14 +35,29 @@ class PricingAdminForm(forms.ModelForm):
 
 
 class ServicePrisingInline(admin.TabularInline):
-    forms = PricingAdminForm
+    # forms = PricingAdminForm
     model = models.Pricing
     extra = 1
+
+    fieldsets = (
+        ("Russian", {
+            "fields": ("title_ru", "description_ru")
+        }),
+        ("Uzbek", {
+            "fields": ("title_uz", "description_uz")
+        }),
+    )
 
 
 class ServiceWorksAdmin(admin.TabularInline):
     model = models.Works
     extra = 1
+
+    fieldsets = (
+        ("Russian", {
+            "fields": ("short_description_ru", "short_description_uz", "photo")
+        }),
+    )
 
 
 @admin.register(models.Services)
@@ -45,10 +70,27 @@ class ServicesAdmin(TranslationAdmin, admin.ModelAdmin):
         ServiceWorksAdmin,
     ]
 
+    fieldsets = (
+        ("Russian", {
+            "fields": (
+                "title_ru", "short_description_ru", "detail_title_ru", "detail_description_ru", "detail_sub_title_ru",
+                "detail_sub_description_ru")
+        }),
+        ("Uzbek", {
+            "fields": (
+                "title_uz", "short_description_uz", "detail_title_uz", "detail_description_uz", "detail_sub_title_uz",
+                "detail_sub_description_uz")
+        }),
+    )
+
 
 @admin.register(models.StaticPhoto)
 class StaticPageAdmin(TranslationAdmin):
-    pass
+    fieldsets = (
+        ("Team/Client", {
+            "fields": ("photo", "background_image", "username_uz", "job_title_uz", "photo_type")
+        }),
+    )
 
 
 @admin.register(models.Slider)
