@@ -86,7 +86,7 @@ class ServiceKeysAPIView(generics.ListAPIView):
 
 
 class ServiceDetailShortAPIView(generics.ListAPIView):
-    queryset = models.Services.objects.all().select_related("service")
+    queryset = models.Services.objects.all()
     serializer_class = serializers.ServiceDetailShortSerializer
 
 
