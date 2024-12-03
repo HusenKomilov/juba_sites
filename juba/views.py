@@ -89,6 +89,10 @@ class ServiceDetailShortAPIView(generics.ListAPIView):
     queryset = models.Services.objects.all()
     serializer_class = serializers.ServiceDetailShortSerializer
 
+    def get_queryset(self):
+        service_id = self.kwargs.get("service_id")
+        return self.queryset.filter(id=service_id)
+
 
 class WorksAPIView(generics.ListAPIView):
     queryset = models.Works.objects.all().select_related("services")
