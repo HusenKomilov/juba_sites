@@ -62,7 +62,9 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+
     'django.middleware.locale.LocaleMiddleware',
+    'juba.middleware.LanguageMiddleware',
 ]
 
 ROOT_URLCONF = "config.urls"
@@ -116,7 +118,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/5.1/topics/i18n/
 
-LANGUAGE_CODE = "uz"
+LANGUAGE_CODE = "en"
 
 TIME_ZONE = "UTC"
 
@@ -168,9 +170,10 @@ CORS_ALLOW_METHODS = [
     "OPTIONS"
 ]
 
-
 LANGUAGES = [
+    ('en', 'English'),
     ('ru', 'Russian'),
     ('uz', 'Uzbek'),
-    # Add other languages here
 ]
+
+MODELTRANSLATION_LANGUAGES = ("en", "uz", "ru")
