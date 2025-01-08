@@ -1,4 +1,3 @@
-from django.utils import translation
 from rest_framework import generics
 
 from juba import models, serializers, choices
@@ -47,14 +46,6 @@ class ContactClientAPIView(generics.CreateAPIView):
 class ServiceHomePageAPIView(generics.ListAPIView):
     queryset = models.Services.objects.all()
     serializer_class = serializers.ServiceHomePageSerializer
-
-    def get_queryset(self):
-        # `Accept-Language` header orqali tilni aniqlash
-        language = self.request.headers.get('Accept-Language', 'uz')  # Default: 'en'
-        translation.activate(language)  # Tilni faollashtirish
-
-        # Asosiy querysetni qaytarish
-        return super().get_queryset()
 
 
 class ServiceDetailSoloAPIView(generics.ListAPIView):
