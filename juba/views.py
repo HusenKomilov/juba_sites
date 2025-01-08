@@ -85,7 +85,7 @@ class ServiceTypeBottomAPIView(generics.ListAPIView):
 
     def get_queryset(self):
         service_id = self.kwargs.get("service_id")
-        return self.queryset.filter(service_id=service_id)
+        return self.queryset.filter(services=service_id)
 
 
 class ServiceKeysAPIView(generics.ListAPIView):
