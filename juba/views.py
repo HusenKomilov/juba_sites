@@ -1,11 +1,19 @@
 from rest_framework import generics
-
+from django.utils import translation
 from juba import models, serializers, choices
 
 
 class SliderPageListAPIView(generics.ListAPIView):
     queryset = models.Slider.objects.all()
     serializer_class = serializers.MainSoloAdmin
+
+    def get_queryset(self):
+        # `Accept-Language` header orqali tilni aniqlash
+        language = self.request.headers.get('Accept-Language', 'en')  # Default: 'en'
+        translation.activate(language)  # Tilni faollashtirish
+
+        # Asosiy querysetni qaytarish
+        return super().get_queryset()
 
 
 class OURKeysAPIView(generics.ListAPIView):
