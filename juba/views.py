@@ -50,7 +50,7 @@ class ServiceHomePageAPIView(generics.ListAPIView):
 
     def get_queryset(self):
         # `Accept-Language` header orqali tilni aniqlash
-        language = self.request.headers.get('Accept-Language', 'en')  # Default: 'en'
+        language = self.request.headers.get('Accept-Language', 'uz')  # Default: 'en'
         translation.activate(language)  # Tilni faollashtirish
 
         # Asosiy querysetni qaytarish
