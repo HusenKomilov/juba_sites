@@ -58,3 +58,8 @@ class SliderTranslationOptions(TranslationOptions):
 @register(models.StaticSolo)
 class StaticSoloTranslationOptions(TranslationOptions):
     fields = ("description",)
+
+@register(models.SEOText)
+class SEOTextTranslationOptions(TranslationOptions):
+    fields = ("title", "description", "keywords")
+

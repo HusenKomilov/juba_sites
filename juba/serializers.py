@@ -107,3 +107,24 @@ class WorksServiceSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.Works
         fields = ("id", "short_description", "services", "photo")
+
+
+class SEOTextSerializer(serializers.ModelSerializer):
+    image = serializers.SerializerMethodField()
+
+    class Meta:
+        model = models.SEOText
+        fields = (
+            "id",
+            "title",
+            "description",
+            "keywords",
+            "slug",
+            "image"
+        )
+
+    def get_image(self, obj):
+        request = self.context.get("request")
+        if obj.image:
+            image_url = obj.image.url
+            return request.build_absolute_uri(image_url)

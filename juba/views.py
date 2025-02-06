@@ -105,3 +105,9 @@ class WorksAPIView(generics.ListAPIView):
     def get_queryset(self):
         service_id = self.kwargs.get("service_id")
         return self.queryset.filter(services_id=service_id)
+
+
+class SEOTextAPIView(generics.RetrieveAPIView):
+    queryset = models.SEOText.objects.all()
+    serializer_class = serializers.SEOTextSerializer
+    lookup_field = "slug"
